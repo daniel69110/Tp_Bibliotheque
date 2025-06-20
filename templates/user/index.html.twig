@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des utilisateurs{% endblock %}
+
+{% block body %}
+    <h1>Liste des utilisateurs</h1>
+
+    <a href="{{ path('app_user_new') }}" class="btn btn-success">Ajouter un utilisateur</a> ou <a href="{{ path('book_new') }}">Ajouter un nouveau livre</a>
+
+    <ul>
+        {% for user in users %}
+            <li>{{ user.nom }} - {{ user.email }}</li>
+        {% else %}
+            <li>Aucun utilisateur trouvé.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

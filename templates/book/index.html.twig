@@ -1,0 +1,58 @@
+<div class="book-list">
+    {% for book in books %}
+        <div class="book-card" style="
+            border: 1px solid #ccc;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;">
+
+            <div>
+                <h2 style="margin:0 0 0.5rem 0;">{{ book.titre }}</h2>
+                <p style="margin:0; font-style: italic;">Auteur : {{ book.auteur }}</p>
+                <p style="margin:0;">ISBN : {{ book.isbn }}</p>
+                <p style="margin:0;">
+                    Catégories :
+                    {% for category in book.categories %}
+                        {{ category.nom }}{% if not loop.last %}, {% endif %}
+                    {% else %}
+                        Aucune catégorie
+                    {% endfor %}
+                </p>
+            </div>
+
+            <div>
+                <a href="{{ path('book_edit', {'id': book.id}) }}" style="
+                    text-decoration: none;
+                    color: #007bff;
+                    margin-right: 1rem;">Modifier</a>
+
+                <form method="post" action="{{ path('book_delete', {'id': book.id}) }}" style="display:inline" onsubmit="return confirm('Supprimer ce livre ?');">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ book.id) }}">
+                    <button type="submit" style="
+                        background: none;
+                        border: none;
+                        color: #dc3545;
+                        cursor: pointer;
+                        font-weight: bold;">Supprimer</button>
+                </form>
+
+                <a href="{{ path('add_review', {'bookId': book.id}) }}" style="
+                    text-decoration: none;
+                    color: #28a745;
+                    margin-left: 1rem;
+                    font-weight: bold;">
+                    Déposer un avis
+                </a>
+                <a href="{{ path('book_reviews', {'bookId': book.id}) }}" style="color: #007bff; font-weight: bold;">
+                    Voir les avis
+                </a>
+            </div>
+        </div>
+    {% else %}
+        <p>Aucun livre pour le moment.</p>
+    {% endfor %}
+</div>

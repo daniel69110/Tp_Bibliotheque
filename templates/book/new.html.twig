@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer un livre{% endblock %}
+
+{% block body %}
+    <div style="
+        max-width: 500px;
+        margin: 2rem auto;
+        padding: 1.5rem;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        background-color: #fff;
+    ">
+        <h1 style="text-align: center; margin-bottom: 1.5rem;">Ajouter un livre</h1>
+
+        {{ form_start(form) }}
+
+        <div style="margin-bottom: 1rem;">
+            {{ form_label(form.titre) }}
+            {{ form_widget(form.titre, {'attr': {'style': 'width: 100%; padding: 0.5rem; border-radius: 4px; border: 1px solid #ccc;'}}) }}
+            {{ form_errors(form.titre) }}
+        </div>
+
+        <div style="margin-bottom: 1rem;">
+            {{ form_label(form.auteur) }}
+            {{ form_widget(form.auteur, {'attr': {'style': 'width: 100%; padding: 0.5rem; border-radius: 4px; border: 1px solid #ccc;'}}) }}
+            {{ form_errors(form.auteur) }}
+        </div>
+
+        <div style="margin-bottom: 1rem;">
+            {{ form_label(form.isbn) }}
+            {{ form_widget(form.isbn, {'attr': {'style': 'width: 100%; padding: 0.5rem; border-radius: 4px; border: 1px solid #ccc;'}}) }}
+            {{ form_errors(form.isbn) }}
+        </div>
+
+        <div style="margin-bottom: 1.5rem;">
+            {{ form_label(form.categories) }}
+            {{ form_widget(form.categories, {'attr': {'style': 'width: 100%; padding: 0.5rem; border-radius: 4px; border: 1px solid #ccc;'}}) }}
+            {{ form_errors(form.categories) }}
+        </div>
+
+        <button type="submit" style="
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1rem;
+        ">Ajouter</button>
+
+        {{ form_end(form) }}
+    </div>
+    <a href="{{ path('book_list') }}">Voir la liste des livres</a>
+
+
+{% endblock %}

@@ -1,0 +1,17 @@
+<h2>Avis pour le livre {{ bookId }}</h2>
+
+<p>Moyenne des notes : {{ average|number_format(2, '.', ',') }}/5</p>
+
+<ul>
+    {% for review in reviews %}
+        <li>
+            Note : {{ review.note }}/5<br>
+            Commentaire : {{ review.commentaire }}<br>
+            Date : {{ review.date|date('d/m/Y H:i') }}
+        </li>
+    {% else %}
+        <li>Aucun avis pour ce livre.</li>
+    {% endfor %}
+</ul>
+
+<a href="{{ path('book_list', {bookId: bookId}) }}">Revenir à la liste des livres</a>
