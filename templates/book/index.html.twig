@@ -1,3 +1,5 @@
+{% extends 'base.html.twig' %}
+{% block body %}
 <div class="book-list">
     {% for book in books %}
         <div class="book-card" style="
@@ -56,3 +58,4 @@
         <p>Aucun livre pour le moment.</p>
     {% endfor %}
 </div>
+{% endblock %}

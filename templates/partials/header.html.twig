@@ -1,0 +1,18 @@
+<header style="
+    background-color: #293041;
+    padding: 1rem 2rem;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom:  1rem;
+">
+    <div class="logo" style="font-weight: bold; font-size: 1.5rem;">
+        <a href="{{ path('app_user') }}" style="color: white; margin-right: 1.5rem; text-decoration: none;">Accueil</a>
+    </div>
+
+    <nav>
+        <a href="{{ path('book_list') }}" style="color: white; margin-right: 1.5rem; text-decoration: none;">Livres</a>
+        <a href="{{ path('book_new') }}" style="color: white; margin-right: 1.5rem; text-decoration: none;">Ajouter un livre</a>
+    </nav>
+</header>
